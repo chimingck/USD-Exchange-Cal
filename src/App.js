@@ -5,7 +5,7 @@ import axios from "axios";
 function App() {
   const [exchangeRates, setExchangeRates] = useState([]);
   const [exchangeRatesHist, setExchangeRatesHist] = useState([]);
-  const [passSevenDays, setPassSevenDay] = useState([])
+  const [pastSevenDays, setPassSevenDay] = useState([])
   const [exchangeOptions, setExchangeOptions] = useState([]);
   const [currency, setCurrency] = useState('');
 
@@ -31,19 +31,22 @@ function App() {
 
     });
 
+    // exchange rates in pass 7 days
+    // use the /historical/*.json endpoint
+    // make 7 requests to get the historical rates of past week
+    // * monthly request allowance for free account is 1,000/month
     async function fetchHistoricalRates() {
-      // exchange rates in pass 7 days
-      var passDays = [];
+      var pastDays = [];
       for (var i = 1; i <= 7; i++) {
           var d = new Date();
           d.setDate(d.getDate() - i);
-          passDays.push( d.toISOString().slice(0, 10) );
+          pastDays.push( d.toISOString().slice(0, 10) );
       }
-      setPassSevenDay(passDays);
+      setPassSevenDay(pastDays);
       // console.log(passSevenDates);
       var newExchangeRateHist = new Array(7);
       for (i = 0; i < 7; i++) {
-        const response = await axios.get(`https://openexchangerates.org/api/historical/${passDays[i]}.json?app_id=${appId}`)
+        const response = await axios.get(`https://openexchangerates.org/api/historical/${pastDays[i]}.json?app_id=${appId}`)
         if (response && response.data) {
           newExchangeRateHist[i] = response.data.rates;
         } else {
@@ -147,7 +150,7 @@ function App() {
             {
               exchangeRatesHist.map((rate, i) => { return (
                   <tr key={i}>
-                    <td>{passSevenDays[i]}</td>
+                    <td>{pastSevenDays[i]}</td>
                     <td>{rate[currency]}</td>
                   </tr>
               ) })
