@@ -1,38 +1,112 @@
+body {
+  max-width: 1200px;
+  background-color: #353b49;
+  margin: 0 auto;
+}
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  color: white;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  /* min-height: 20vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+  margin: 40px 0;
+}
+
+.column {
+  float: left;
+  width: 45%;
+  text-align: -webkit-center;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.symbol {
+  font-size: 2em;
+}
+
+#usd-input,
+#target-currency-input {
+  width: 60%;
+  padding: 6px;
+  font-size: 1.8em;
+  font-weight: bold;
+  text-align: center;
   color: white;
+  background: transparent;
+  border: solid 2px white;
+  border-radius: 6px;
 }
 
-.App-link {
-  color: #61dafb;
+select#target-currency {
+  display: block;
+  font-size: 2em;
+  font-weight: bold;
+  color: white;
+  margin: 0.83em auto;
+  text-align: center;
+  text-align-last:center;
+  min-width: 100px;
+  width: 25%;
+  background: transparent;
+  border: 1px solid white;
+  border-radius: 6px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+select#target-currency option {
+  color: white;
+  background: #353b49;
+
+}
+
+.exchange-symbol {
+  font-size: 2em;
+  float: left;
+  width: 10%;
+  padding-top: 20px;
+}
+
+.exchange-rate {
+  padding: 30px 10px;
+  font-size: 1.2em;
+}
+
+.historical {
+  margin-top: 40px;
+  margin-bottom: 80px;
+}
+
+.historical h1 {
+  font-size: 1.6em;
+}
+
+table.historical-rates {
+  width: 83%;
+  margin: 0 auto;
+  margin-bottom: 40px;
+  font-size: 1.4em;
+}
+
+th.historical-date {
+  width: 50%;
+}
+th.historical-rate {
+  width: 50%;
+}
+
+table, th, td {
+  padding: 6px;
+  border: 2px solid white;
+  border-collapse:  collapse;
 }
