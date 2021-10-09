@@ -1,5 +1,7 @@
 # A Simple USD Exchange Caluculator
 
+live https://usd-exchange-calculator.web.app/
+
 A Simple Calcualtor using React.js
 
 Real time exchange rates from https://openexchangerates.org/
